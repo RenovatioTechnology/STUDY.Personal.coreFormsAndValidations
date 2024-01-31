@@ -1,0 +1,28 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>WeeklyLogin</title>
+</head>
+<body>
+    <!-- Pass action method LoginPost. Second parameter name of the controller.The third is the method type that you wanted to call-->
+    @using (Html.BeginForm("LoginPost","Account",FormMethod.Post))
+    {
+        <div>
+            Username:@Html.TextBox("Username")
+        </div>
+        <div>
+            Password:@Html.Password("Password")
+        </div>
+        <div>
+            <input type="submit" value="login"/>
+        </div>
+    }
+</body>
+</html>
