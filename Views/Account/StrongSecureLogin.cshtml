@@ -1,0 +1,25 @@
+﻿@model coreFormsAndValidations.Models.LoginViewModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>StrongSecureLogin</title>
+</head>
+<body>
+     @using(Html.BeginForm("LoginSuccess","Account",FormMethod.Post))
+  {
+      // So whatever model you chosen will be using m, which is a shorter lambda variable m.user.
+      // Whatever property you have mentioned in LoginViewModel will be accessible with the help of this lambda variable.
+      <div>Username:@Html.TextBoxFor(m => m.Username)</div>
+      <div>Password:@Html.PasswordFor(m => m.Password)</div>
+
+      <div><input type="submit" value="Login"></div>
+  }
+</body>
+</html>
