@@ -32,5 +32,27 @@ namespace coreFormsAndValidations.Controllers
             return View();
         }
 
+        //Model Binding
+        public IActionResult UserDetail()
+        {
+            var user = new LoginViewModel()
+            {
+                Username = "JNah",
+                Password = "12356"
+            };
+            return View(user);
+
+        }
+        public IActionResult UserList()
+        {
+            var users = new List<LoginViewModel>()
+            {
+                new LoginViewModel(){ Username = "JNah", Password = "12356" },
+                new LoginViewModel(){ Username = "Mike", Password = "12356" },
+                new LoginViewModel(){ Username = "King", Password = "12356"}
+        };
+            return View(users);   
+
+        }
     }
 }
