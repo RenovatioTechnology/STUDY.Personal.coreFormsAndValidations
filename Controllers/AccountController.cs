@@ -1,5 +1,10 @@
 ﻿using coreFormsAndValidations.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Hosting;
+using System.ComponentModel;
+using System;
+using Humanizer;
+using System.IO;
 
 namespace coreFormsAndValidations.Controllers
 {
@@ -27,8 +32,25 @@ namespace coreFormsAndValidations.Controllers
         [HttpPost]
         public IActionResult LoginSuccess(LoginViewModel login) 
         {
-            ViewBag.Username = login.Username;
-            ViewBag.Password = login.Password; 
+            //  ViewBag.Username = login.Username;
+            //   ViewBag.Password = login.Password; 
+
+
+            //   expecting the parameter into the post you can directly create the object of your strong secure model and access the values, check with the if condition.
+            //   If login.username is not equals to null and password is also not equals to null, then come inside it and check the logic.
+            //   Teh post you like to check if the fields are not empty if login.username is equals admin and login.password also admin.
+            //   ViewBag.Message property, you are successfully logged in.
+            if (login.Username !=null && login.Password != null)
+            {
+                if(login.Username.Equals("admin")&& login.Password.Equals("admin"))
+                {
+                    ViewBag.Message = "You've successfully logged in.";
+                    return View();
+                }
+
+            }
+            // Before returning to the view  you can directly assign one message for all the else otherwise condition invalid credentials.
+            ViewBag.Message = "Invalid Credentials.";
             return View();
         }
 
