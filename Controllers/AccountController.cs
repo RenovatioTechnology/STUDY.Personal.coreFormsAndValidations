@@ -76,5 +76,26 @@ namespace coreFormsAndValidations.Controllers
             return View(users);   
 
         }
+
+        //Forms Validations - Server Side and Client Side
+        // validating Account.cs with the help of the action method below
+        public IActionResult GetAccount()
+        {
+            // Remember to Add a Razor View w/tamplate→Create→Model class→Account for the View
+            return View();
+
+        }
+
+        [HttpPost] 
+        public IActionResult PostAccount(Account account)
+        {
+            if (ModelState.IsValid)
+            {
+                // Dont forget we will require a view for this success
+                return View("Success");
+            }
+            // Otherwise return to GetAccount View
+            return RedirectToAction("GetAccount");
+        }
     }
 }
